@@ -11,7 +11,9 @@ module Jjjaaa
 
       Process.detach job
 
-      @app.call(env)
+      status, headers, response = @app.call(env)
+
+      [status, headers, response]
     end
 
     private
@@ -33,7 +35,7 @@ module Jjjaaa
     end
 
     def jjjaaa
-      sounds.join "jjjaaa.m4a"
+      sounds.join "jjjaaa#{(0..12).to_a.sample}.mp3"
     end
   end
 end
